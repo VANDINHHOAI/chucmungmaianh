@@ -81,7 +81,7 @@ const btnFlower = document.getElementById("btn-flower");
 if (btnPopupFlower && modal && modalTitle && btnFlower) {
     btnPopupFlower.addEventListener("click", () => {
         modal.style.display = "flex";
-        modalTitle.textContent = "Tặng hoa🌸";
+        modalTitle.textContent = "Tặng hoa nè🌸";
     });
 
     btnFlower.addEventListener("click", () => {
