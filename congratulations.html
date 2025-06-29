@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Congratulations</title>
+    <link rel="stylesheet" href="congratulations.css" />
+</head>
+<body>
+    <canvas id="fireworks-canvas"></canvas>
+
+    <div class="container">
+        <h1 id="message" class="message"></h1>
+
+        <div class="wrapper">
+            <img id="girl_img" src="1-removebg-preview.png" alt="Graduation Girl"/>
+            <div class="box_btn">
+                <button id="btn-popup-flower" class="btn_flower">Nhận hoa</button>
+                <button id="btn-show-message" class="btn_open">Xem lời chúc</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="close-popup" class="close">&times;</span>
+            <p id="popup-message"></p>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h1 class="modal-title"></h1>
+            <img src="flower.gif" alt="">
+            <button id="btn-flower" class="btn-close-modal">NHẬN</button>
+        </div>
+    </div>
+
+    <audio id="bg-music" autoplay loop>
+        <source src="Photograph - Ed Sheeran (Piano Cover by Riyandi Kusuma).mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="toast" class="toast">🎉 Bạn đã nhận hoa rồi đó!</div>
+
+    <!-- Scripts -->
+    <script src="fireworks.js"></script>
+    <script src="congratulations.js"></script>
+
+</body>
+</html>

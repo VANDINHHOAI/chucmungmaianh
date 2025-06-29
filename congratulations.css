@@ -1,0 +1,324 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #E0EEEE;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.message {
+    color: #FFB6C1;
+    font-size: 2rem;
+    font-weight: 600;
+    font-weight: bold;
+    margin-top: 30px;
+    text-align: center;
+    z-index: 10;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px 100px;
+    margin-top: 30px;
+}
+
+#girl_img {
+    width: 450px;
+    height: auto;
+    transform: scaleX(-1);
+    object-fit: cover;
+    z-index: 2;
+}
+
+.box_btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn_flower,
+.btn_open {
+    color: white;
+    font-weight: 600;
+    width: 120px;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 16px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    transition: .3s ease-in-out;
+    z-index: 2;
+}
+
+.btn_flower {
+    background: #00BFFF;
+}
+
+.btn_open {
+    background: #FFC1C1;
+}
+
+.btn_flower:hover {
+    color: #00BFFF;
+    background: white;
+    border: 2px solid #00BFFF;
+}
+
+.btn_open:hover {
+    color: #FFC1C1;
+    background: white;
+    border: 2px solid #FFC1C1;
+}
+
+#fireworks-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -10; /* pháo hoa ở dưới cùng */
+}
+
+/* ========== POPUP ========== */
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background: white;
+    padding: 50px 40px;
+    border: 3px solid #FF69B4;
+    border-radius: 20px;
+    max-width: 650px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: popupFadeIn 0.4s ease-out;
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#popup-message {
+    color: #FF69B4;
+    font-weight: 600;
+    font-size: 21px;
+    white-space: wrap;
+    word-break: break-word;
+}
+
+.popup .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #555;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.popup .close:hover {
+    color: #ff5b5b;
+}
+
+/* ========== Hiệu ứng chữ đánh máy ========= */
+.popup-content span,
+.message span {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInLetter 0.3s forwards;
+}
+
+@keyframes fadeInLetter {
+    to {
+        opacity: 1;
+    }
+}
+
+#modal.modal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.modal-content {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 20px;
+    border: 3px solid #00BFFF;
+    border-radius: 25px;
+    background: white;
+}
+
+.modal-content .modal-title {
+    font-size: 18px;
+}
+
+.modal-content img {
+    max-width: 200px;
+    height: auto;
+    object-fit: cover;
+}
+
+.modal-content .btn-close-modal {
+    color: white;
+    background: #00BFFF;
+    font-weight: 600;
+    width: 120px;
+    height: 50px;
+    font-size: 15px;
+    border-radius: 16px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    transition: .3s ease-in-out;
+    z-index: 2;
+}
+
+.modal-content .btn-close-modal:hover {
+    color: #00BFFF;
+    background: white;
+    border: 2px solid #00BFFF;
+}
+
+.toast {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    background-color: #FFB6C1;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ========== RESPONSIVE CHO MÀN HÌNH NHỎ (Mobile & Tablet) ========== */
+@media (max-width: 768px) {
+    .message {
+        font-size: 24px;
+        padding: 0 10px;
+    }
+
+    .wrapper {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    #girl_img {
+        width: 250px;
+        transform: scaleX(-1);
+    }
+
+    .box_btn {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn_flower,
+    .btn_open,
+    .modal-content .btn-close-modal {
+        width: 200px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .popup-content {
+        position: relative;
+        width: 90%;
+        height: auto;
+        padding: 30px 40px;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    #popup-message {
+        font-size: 10px;
+    }
+
+    #close-popup.close {
+        position: absolute;
+        top: 0;
+        right: 10px;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .modal-content img {
+        width: 80%;
+    }
+
+    .toast {
+        right: 20px;
+        top: 20px;
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+}
